@@ -116,7 +116,7 @@ namespace CatDev
                 Console.WriteLine();
                 Console.WriteLine($"HWID:\t\t{CatUut.WWAN.hwid}");
                 Console.WriteLine($"DRIVER:\t\t{CatUut.WWAN.driver}");
-                Console.WriteLine($"FIRMWARE:\t\t{CatUut.WWAN.firmware}");
+                Console.WriteLine($"FIRMWARE:\t{CatUut.WWAN.firmware}");
                 Console.WriteLine($"MODEM:\t\t{CatUut.WWAN.modem}");
                 Console.WriteLine($"UDE:\t\t{CatUut.WWAN.ude}");
                 Console.WriteLine($"GNSS:\t\t{CatUut.WWAN.gnss}");
