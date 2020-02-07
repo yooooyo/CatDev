@@ -1,0 +1,47 @@
+﻿{
+	"sn": "",
+	"bios": "",
+	"os": "",
+	"image": "",
+	"platform": "",
+	"wwan": [
+		{
+			"hwid": "",
+			"driver": "",
+			"modem": "",
+			"firmware": "",
+			"ude":"",
+			"gnss":""
+		},
+	],
+	"wlan": [
+		{
+			"hwid": "",
+			"driver": ""
+		}
+	],
+	"lan": [
+		{
+			"hwid": "",
+			"driver": ""
+		}
+	],
+	"bt": [
+		{
+			"hwid": "",
+			"driver": ""
+		}
+	],
+	"nfc": [
+		{
+			"hwid": "",
+			"driver": ""
+		}
+	],
+	"rfid": [
+		{
+			"hwid": "",
+			"driver": ""
+		}
+	]
+}

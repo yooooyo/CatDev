@@ -1,0 +1,10 @@
+SELECT Description, DRIVERVERSION,HardWareID FROM WIN32_PNPSIGNEDDRIVER WHERE 
+(deviceclass='net' and ((description like '%intel%' and description like '%wireless%') or (description like '%intel%' and description like '%wi-fi%') or (description like '%realtek%' and description like '%802.11%')))
+(deviceclass='System' and  (Description like '%ModemControl%'))
+(deviceclass='System' and  (Description like '%7360%' or Description like '%7560%' or Description like '%xmm%'))
+(deviceclass='net' and ((description like '%intel%' and description like '%ethernet%') or (description like '%realtek%' and description like '%gbe%')))
+(deviceclass='net' and (Description like '%Mobile Broadband%'))
+(deviceclass='Bluetooth' and ((description like '%intel%') or (description like '%realtek%')))
+(deviceclass='Proximity')
+(deviceclass='HIDClass' and HardWareID like '%0C27%')
+(deviceclass='Sensor' and DeviceName like '%GNSS%')
