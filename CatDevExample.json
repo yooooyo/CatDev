@@ -6,40 +6,46 @@
 	"platform": "",
 	"wwan": [
 		{
+			"name": "",
 			"hwid": "",
 			"driver": "",
 			"modem": "",
 			"firmware": "",
-			"ude":"",
-			"gnss":""
+			"ude": "",
+			"gnss": ""
 		},
 	],
 	"wlan": [
 		{
+			"name": "",
 			"hwid": "",
 			"driver": ""
 		}
 	],
 	"lan": [
 		{
+			"name": "",
 			"hwid": "",
 			"driver": ""
 		}
 	],
 	"bt": [
 		{
+			"name": "",
 			"hwid": "",
 			"driver": ""
 		}
 	],
 	"nfc": [
 		{
+			"name": "",
 			"hwid": "",
 			"driver": ""
 		}
 	],
 	"rfid": [
 		{
+			"name": "",
 			"hwid": "",
 			"driver": ""
 		}

@@ -88,6 +88,12 @@
             this.lb_appname = new System.Windows.Forms.Label();
             this.btn_appclose = new System.Windows.Forms.Button();
             this.bgw_load_dev = new System.ComponentModel.BackgroundWorker();
+            this.lb_wwan_name = new System.Windows.Forms.Label();
+            this.lb_wlan_name = new System.Windows.Forms.Label();
+            this.lb_lan_name = new System.Windows.Forms.Label();
+            this.lb_bt_name = new System.Windows.Forms.Label();
+            this.lb_nfc_name = new System.Windows.Forms.Label();
+            this.lb_rfid_name = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -156,6 +162,12 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.lb_rfid_name);
+            this.panel3.Controls.Add(this.lb_nfc_name);
+            this.panel3.Controls.Add(this.lb_bt_name);
+            this.panel3.Controls.Add(this.lb_lan_name);
+            this.panel3.Controls.Add(this.lb_wlan_name);
+            this.panel3.Controls.Add(this.lb_wwan_name);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label5);
@@ -657,7 +669,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.33334F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel1.Controls.Add(this.lb_appname, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_appclose, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -689,9 +701,9 @@
             this.btn_appclose.FlatAppearance.BorderSize = 0;
             this.btn_appclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_appclose.Image = ((System.Drawing.Image)(resources.GetObject("btn_appclose.Image")));
-            this.btn_appclose.Location = new System.Drawing.Point(507, 3);
+            this.btn_appclose.Location = new System.Drawing.Point(506, 3);
             this.btn_appclose.Name = "btn_appclose";
-            this.btn_appclose.Size = new System.Drawing.Size(36, 24);
+            this.btn_appclose.Size = new System.Drawing.Size(37, 24);
             this.btn_appclose.TabIndex = 1;
             this.btn_appclose.UseVisualStyleBackColor = true;
             this.btn_appclose.Click += new System.EventHandler(this.btn_appclose_Click);
@@ -699,6 +711,60 @@
             // bgw_load_dev
             // 
             this.bgw_load_dev.WorkerReportsProgress = true;
+            // 
+            // lb_wwan_name
+            // 
+            this.lb_wwan_name.AutoSize = true;
+            this.lb_wwan_name.Location = new System.Drawing.Point(42, 17);
+            this.lb_wwan_name.Name = "lb_wwan_name";
+            this.lb_wwan_name.Size = new System.Drawing.Size(41, 13);
+            this.lb_wwan_name.TabIndex = 1;
+            this.lb_wwan_name.Text = "label11";
+            // 
+            // lb_wlan_name
+            // 
+            this.lb_wlan_name.AutoSize = true;
+            this.lb_wlan_name.Location = new System.Drawing.Point(42, 114);
+            this.lb_wlan_name.Name = "lb_wlan_name";
+            this.lb_wlan_name.Size = new System.Drawing.Size(41, 13);
+            this.lb_wlan_name.TabIndex = 1;
+            this.lb_wlan_name.Text = "label11";
+            // 
+            // lb_lan_name
+            // 
+            this.lb_lan_name.AutoSize = true;
+            this.lb_lan_name.Location = new System.Drawing.Point(42, 154);
+            this.lb_lan_name.Name = "lb_lan_name";
+            this.lb_lan_name.Size = new System.Drawing.Size(41, 13);
+            this.lb_lan_name.TabIndex = 1;
+            this.lb_lan_name.Text = "label11";
+            // 
+            // lb_bt_name
+            // 
+            this.lb_bt_name.AutoSize = true;
+            this.lb_bt_name.Location = new System.Drawing.Point(42, 194);
+            this.lb_bt_name.Name = "lb_bt_name";
+            this.lb_bt_name.Size = new System.Drawing.Size(41, 13);
+            this.lb_bt_name.TabIndex = 1;
+            this.lb_bt_name.Text = "label11";
+            // 
+            // lb_nfc_name
+            // 
+            this.lb_nfc_name.AutoSize = true;
+            this.lb_nfc_name.Location = new System.Drawing.Point(42, 234);
+            this.lb_nfc_name.Name = "lb_nfc_name";
+            this.lb_nfc_name.Size = new System.Drawing.Size(41, 13);
+            this.lb_nfc_name.TabIndex = 1;
+            this.lb_nfc_name.Text = "label11";
+            // 
+            // lb_rfid_name
+            // 
+            this.lb_rfid_name.AutoSize = true;
+            this.lb_rfid_name.Location = new System.Drawing.Point(42, 278);
+            this.lb_rfid_name.Name = "lb_rfid_name";
+            this.lb_rfid_name.Size = new System.Drawing.Size(41, 13);
+            this.lb_rfid_name.TabIndex = 1;
+            this.lb_rfid_name.Text = "label11";
             // 
             // F1_Main
             // 
@@ -784,6 +850,12 @@
         private System.Windows.Forms.Button btn_expor_json;
         private System.Windows.Forms.Button btn_ref_info;
         private System.ComponentModel.BackgroundWorker bgw_load_dev;
+        private System.Windows.Forms.Label lb_rfid_name;
+        private System.Windows.Forms.Label lb_nfc_name;
+        private System.Windows.Forms.Label lb_bt_name;
+        private System.Windows.Forms.Label lb_lan_name;
+        private System.Windows.Forms.Label lb_wlan_name;
+        private System.Windows.Forms.Label lb_wwan_name;
     }
 }
 

@@ -33,7 +33,6 @@ namespace CatDev
                 return sn;
             }
         }
-
         public static string Platform
         {
             get
@@ -53,7 +52,6 @@ namespace CatDev
                 return platform;
             }
         }
-
         public static string OS
         {
             get
@@ -107,18 +105,22 @@ namespace CatDev
                 return bios;
             }
         }
+
         public struct WLAN
         {
+            public static string name = "NA";
             public static string hwid = "NA";
             public static string driver = "NA";
         }
         public struct BT
         {
+            public static string name = "NA";
             public static string hwid = "NA";
             public static string driver = "NA";
         }
         public struct WWAN
         {
+            public static string name = "NA";
             public static string hwid = "NA";
             public static string driver = "NA";
             public static string modem = "NA";
@@ -129,16 +131,19 @@ namespace CatDev
         }
         public struct LAN
         {
+            public static string name = "NA";
             public static string hwid = "NA";
             public static string driver = "NA";
         }
         public struct RFID
         {
+            public static string name = "NA";
             public static string hwid = "NA";
             public static string driver = "NA";
         }
         public struct NFC
         {
+            public static string name = "NA";
             public static string hwid = "NA";
             public static string driver = "NA";
         }
@@ -154,8 +159,7 @@ namespace CatDev
 
                     foreach (var p in v.Properties)
                     {
-                        dev.Add(p.Name, ((string)p.Value).ToLower());
-                        
+                        if(p.Value !=null && !(p.Value is bool)) dev.Add(p.Name, ((string)p.Value));
                         //Console.WriteLine($"Name {p.Name} Value {p.Value}");
                     }
 
@@ -163,45 +167,48 @@ namespace CatDev
                 }
             }
             var wlan = (from dev in devs
-                        where (dev["Description"].Contains("intel") && dev["Description"].Contains("wireless")) || (dev["Description"].Contains("intel") && dev["Description"].Contains("wi-fi")) || (dev["Description"].Contains("realtek") && dev["Description"].Contains("802.11"))
+                        where (dev["Description"].ToLower().Contains("intel") && dev["Description"].ToLower().Contains("wireless")) || (dev["Description"].ToLower().Contains("intel") && dev["Description"].ToLower().Contains("wi-fi")) || (dev["Description"].ToLower().Contains("realtek") && dev["Description"].ToLower().Contains("802.11"))
                         select dev).FirstOrDefault();
             var lan = (from dev in devs
-                       where (dev["Description"].Contains("intel") && dev["Description"].Contains("ethernet")) || (dev["Description"].Contains("realtek") && dev["Description"].Contains("gbe"))
+                       where (dev["Description"].ToLower().Contains("intel") && dev["Description"].ToLower().Contains("ethernet")) || (dev["Description"].ToLower().Contains("realtek") && dev["Description"].ToLower().Contains("gbe"))
                        select dev).FirstOrDefault();
             var wwan = (from dev in devs
-                            where (dev["Description"].Contains("mobile broadband"))
+                            where (dev["Description"].ToLower().Contains("mobile broadband"))
                             select dev).FirstOrDefault();
             var ude = (from dev in devs
-                       where (dev["Description"].Contains("intel") && dev["Description"].Contains("xmm")) || (dev["Description"].Contains("hp") && dev["Description"].Contains("lte"))
+                       where (dev["Description"].ToLower().Contains("intel") && dev["Description"].ToLower().Contains("xmm")) || (dev["Description"].ToLower().Contains("hp") && dev["Description"].ToLower().Contains("lte"))
                        select dev).FirstOrDefault();
             var modem = (from dev in devs
-                         where (dev["Description"].Contains("modem"))
+                         where (dev["Description"].ToLower().Contains("modem"))
                          select dev).FirstOrDefault();
             var gnss = (from dev in devs
-                        where (dev["Description"].Contains("gnss"))
+                        where (dev["Description"].ToLower().Contains("gnss"))
                         select dev).FirstOrDefault();
             var bt = (from dev in devs
-                         where (dev["Description"].Contains("intel")&& dev["Description"].Contains("bluetooth")) || (dev["Description"].Contains("realtek") && dev["Description"].Contains("bluetooth"))
+                         where (dev["Description"].ToLower().Contains("intel")&& dev["Description"].ToLower().Contains("bluetooth")) || (dev["Description"].ToLower().Contains("realtek") && dev["Description"].ToLower().Contains("bluetooth"))
                       select dev).FirstOrDefault();
             var nfc = (from dev in devs
-                      where (dev["Description"].Contains("nfc")) || (dev["Description"].Contains("nxp"))
+                      where (dev["Description"].ToLower().Contains("nfc")) || (dev["Description"].ToLower().Contains("nxp"))
                       select dev).FirstOrDefault();
             var rfid = (from dev in devs
-                        where (dev["HardWareID"].Contains("0C27"))
+                        where (dev["HardWareID"].ToLower().Contains("0C27"))
                         select dev).FirstOrDefault();
 
             if (wlan != null && wlan.Count > 0)
             {
+                CatUut.WLAN.name = wlan["Description"];
                 CatUut.WLAN.hwid = wlan["HardWareID"];
                 CatUut.WLAN.driver = wlan["DriverVersion"];
             }
             if (lan != null && lan.Count > 0)
             {
+                CatUut.LAN.name = lan["Description"];
                 CatUut.LAN.hwid = lan["HardWareID"];
                 CatUut.LAN.driver = lan["DriverVersion"];
             }
             if (wwan != null && wwan.Count > 0)
             {
+                CatUut.WWAN.name = wwan["FriendlyName"];
                 CatUut.WWAN.hwid = wwan["HardWareID"];
             }
             if (ude != null && ude.Count > 0)
@@ -220,16 +227,19 @@ namespace CatDev
             CatUut.WWAN.driver   = GetWWANDR();
             if (bt != null && bt.Count > 0)
             {
+                CatUut.BT.name = bt["Description"];
                 CatUut.BT.hwid = bt["HardWareID"];
                 CatUut.BT.driver = bt["DriverVersion"];
             }
             if (nfc != null && nfc.Count > 0)
             {
+                CatUut.NFC.name = nfc["Description"];
                 CatUut.NFC.hwid = nfc["HardWareID"];
                 CatUut.NFC.driver = nfc["DriverVersion"];
             }
             if (rfid != null && rfid.Count > 0)
             {
+                CatUut.RFID.name = rfid["Description"];
                 CatUut.RFID.hwid = rfid["HardWareID"];
                 CatUut.RFID.driver = rfid["DriverVersion"];
             }
@@ -249,6 +259,7 @@ namespace CatDev
                 {
                     new Wwan()
                     {
+                        name = CatUut.WWAN.name,
                         hwid =CatUut.WWAN.hwid,
                         driver =CatUut.WWAN.driver,
                         modem =CatUut.WWAN.modem,
@@ -261,6 +272,7 @@ namespace CatDev
                 {
                     new Wlan()
                     {
+                        name = CatUut.WLAN.name,
                         hwid =CatUut.WLAN.hwid,
                         driver =CatUut.WLAN.driver,
                     }
@@ -269,6 +281,7 @@ namespace CatDev
                 {
                     new Lan()
                     {
+                        name = CatUut.LAN.name,
                         hwid =CatUut.LAN.hwid,
                         driver =CatUut.LAN.driver,
                     }
@@ -277,6 +290,7 @@ namespace CatDev
                 {
                     new Bt()
                     {
+                        name = CatUut.BT.name,
                         hwid =CatUut.BT.hwid,
                         driver =CatUut.BT.driver,
                     }
@@ -285,6 +299,7 @@ namespace CatDev
                 {
                     new Nfc()
                     {
+                        name = CatUut.NFC.name,
                         hwid =CatUut.NFC.hwid,
                         driver =CatUut.NFC.driver,
                     }
@@ -293,6 +308,7 @@ namespace CatDev
                 {
                     new Rfid()
                     {
+                        name = CatUut.RFID.name,
                         hwid =CatUut.RFID.hwid,
                         driver =CatUut.RFID.driver,
                     }
@@ -304,36 +320,37 @@ namespace CatDev
 
         private static string GetWWANFW()
         {
-            MbnInterfaceManager mbn = new MbnInterfaceManager();
-            IMbnInterfaceManager imbn = (IMbnInterfaceManager)mbn;
-
-            IMbnInterface[] interfaces = (IMbnInterface[])imbn.GetInterfaces();
-            void debug()
-            {
-                foreach (var _interface in interfaces)
-                {
-                    MBN_INTERFACE_CAPS caps = _interface.GetInterfaceCapability();
-                    MBN_PROVIDER provider = _interface.GetHomeProvider();
-                    MBN_READY_STATE readyState = _interface.GetReadyState();
-                    IMbnRadio radio = (IMbnRadio)_interface;
-
-                    Console.WriteLine();
-                    Console.WriteLine("Manufacturer:        " + caps.manufacturer);
-                    Console.WriteLine("Model:               " + caps.model);
-                    Console.WriteLine("DeviceID:            " + caps.deviceID);
-                    Console.WriteLine("FirmwareInfo:        " + caps.firmwareInfo);
-                    Console.WriteLine("Ready State :        " + readyState.ToString());
-                    Console.WriteLine("HardwareRadioState:  " + radio.HardwareRadioState.ToString());
-                    Console.WriteLine("SoftwareRadioState:  " + radio.SoftwareRadioState.ToString());
-                    Console.WriteLine("InterfaceID:         " + _interface.InterfaceID);
-                    Console.WriteLine("Provider:            " + provider.providerName);
-                    Console.WriteLine("ProviderID:          " + provider.providerID);
-                    Console.WriteLine("ProviderState:       " + provider.providerState);
-
-                }
-            }
             try
             {
+                MbnInterfaceManager mbn = new MbnInterfaceManager();
+                IMbnInterfaceManager imbn = (IMbnInterfaceManager)mbn;
+
+                IMbnInterface[] interfaces = (IMbnInterface[])imbn.GetInterfaces();
+                void debug()
+                {
+                    foreach (var _interface in interfaces)
+                    {
+                        MBN_INTERFACE_CAPS caps = _interface.GetInterfaceCapability();
+                        MBN_PROVIDER provider = _interface.GetHomeProvider();
+                        MBN_READY_STATE readyState = _interface.GetReadyState();
+                        IMbnRadio radio = (IMbnRadio)_interface;
+
+                        Console.WriteLine();
+                        Console.WriteLine("Manufacturer:        " + caps.manufacturer);
+                        Console.WriteLine("Model:               " + caps.model);
+                        Console.WriteLine("DeviceID:            " + caps.deviceID);
+                        Console.WriteLine("FirmwareInfo:        " + caps.firmwareInfo);
+                        Console.WriteLine("Ready State :        " + readyState.ToString());
+                        Console.WriteLine("HardwareRadioState:  " + radio.HardwareRadioState.ToString());
+                        Console.WriteLine("SoftwareRadioState:  " + radio.SoftwareRadioState.ToString());
+                        Console.WriteLine("InterfaceID:         " + _interface.InterfaceID);
+                        Console.WriteLine("Provider:            " + provider.providerName);
+                        Console.WriteLine("ProviderID:          " + provider.providerID);
+                        Console.WriteLine("ProviderState:       " + provider.providerState);
+
+                    }
+                }
+
                 //x64
                 //string output = "";
                 //if (executeProgram(@"netsh ", "mbn sh inter", out output) && output != "")

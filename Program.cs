@@ -14,6 +14,7 @@ namespace CatDev
         [STAThread]
         static void Main(string[] args)
         {
+            var command = args[0].Trim();
             if(args!=null && args.Length > 0)
             {
                 List<string> deviceCommandlist = new List<string>()
@@ -37,7 +38,7 @@ namespace CatDev
                 {
                     CatUut.GetCommDev();
                 }
-                switch (args[0])
+                switch (command)
                 {
                     case "sn":
                         Console.WriteLine(CatUut.SN);
@@ -114,6 +115,7 @@ namespace CatDev
             {
                 Console.WriteLine($"================WWAN================");
                 Console.WriteLine();
+                Console.WriteLine($"HWID:\t\t{CatUut.WWAN.name}");
                 Console.WriteLine($"HWID:\t\t{CatUut.WWAN.hwid}");
                 Console.WriteLine($"DRIVER:\t\t{CatUut.WWAN.driver}");
                 Console.WriteLine($"FIRMWARE:\t{CatUut.WWAN.firmware}");
@@ -126,6 +128,7 @@ namespace CatDev
             {
                 Console.WriteLine($"================WLAN================");
                 Console.WriteLine();
+                Console.WriteLine($"HWID:\t\t{CatUut.WLAN.name}");
                 Console.WriteLine($"HWID:\t\t{CatUut.WLAN.hwid}");
                 Console.WriteLine($"DRIVER:\t\t{CatUut.WLAN.driver}");
                 Console.WriteLine();
@@ -134,6 +137,7 @@ namespace CatDev
             {
                 Console.WriteLine($"================LAN=================");
                 Console.WriteLine();
+                Console.WriteLine($"HWID:\t\t{CatUut.LAN.name}");
                 Console.WriteLine($"HWID:\t\t{CatUut.LAN.hwid}");
                 Console.WriteLine($"DRIVER:\t\t{CatUut.LAN.driver}");
                 Console.WriteLine();
@@ -142,6 +146,7 @@ namespace CatDev
             {
                 Console.WriteLine($"================BT==================");
                 Console.WriteLine();
+                Console.WriteLine($"HWID:\t\t{CatUut.BT.name}");
                 Console.WriteLine($"HWID:\t\t{CatUut.BT.hwid}");
                 Console.WriteLine($"DRIVER:\t\t{CatUut.BT.driver}");
                 Console.WriteLine();
@@ -150,6 +155,7 @@ namespace CatDev
             {
                 Console.WriteLine($"================NFC=================");
                 Console.WriteLine();
+                Console.WriteLine($"HWID:\t\t{CatUut.NFC.name}");
                 Console.WriteLine($"HWID:\t\t{CatUut.NFC.hwid}");
                 Console.WriteLine($"DRIVER:\t\t{CatUut.NFC.driver}");
                 Console.WriteLine();
@@ -158,6 +164,7 @@ namespace CatDev
             {
                 Console.WriteLine($"================RFID================");
                 Console.WriteLine();
+                Console.WriteLine($"HWID:\t\t{CatUut.RFID.name}");
                 Console.WriteLine($"HWID:\t\t{CatUut.RFID.hwid}");
                 Console.WriteLine($"DRIVER:\t\t{CatUut.RFID.driver}");
                 Console.WriteLine();

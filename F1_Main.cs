@@ -34,6 +34,7 @@ namespace CatDev
             lb_image.Text = CatUut.Image;
             lb_platform.Text = CatUut.Platform;
 
+            lb_wwan_name.Text = CatUut.WWAN.name;
             lb_wwan_hwid.Text = CatUut.WWAN.hwid;
             lb_wwan_driver.Text = CatUut.WWAN.driver;
             lb_wwan_firmware.Text = CatUut.WWAN.firmware;
@@ -41,18 +42,23 @@ namespace CatDev
             lb_wwan_ude.Text = CatUut.WWAN.ude;
             lb_wwan_gnss.Text = CatUut.WWAN.gnss;
 
+            lb_wlan_name.Text = CatUut.WLAN.name;
             lb_wlan_hwid.Text = CatUut.WLAN.hwid;
             lb_wlan_driver.Text = CatUut.WLAN.driver;
 
+            lb_lan_name.Text = CatUut.LAN.name;
             lb_lan_driver.Text = CatUut.LAN.driver;
             lb_lan_hwid.Text = CatUut.LAN.hwid;
 
+            lb_bt_name.Text = CatUut.BT.name;
             lb_bt_driver.Text = CatUut.BT.driver;
             lb_bt_hwid.Text = CatUut.BT.hwid;
 
+            lb_nfc_name.Text = CatUut.NFC.name;
             lb_nfc_hwid.Text = CatUut.NFC.hwid;
             lb_nfc_driver.Text = CatUut.NFC.driver;
 
+            lb_rfid_name.Text = CatUut.RFID.name;
             lb_rfid_hwid.Text = CatUut.RFID.hwid;
             lb_rfid_driver.Text = CatUut.RFID.driver;
 

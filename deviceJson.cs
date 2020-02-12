@@ -11,6 +11,7 @@ namespace CatDev
     #region Device
     public class Wwan
     {
+        public string name { get; set; }
         public string hwid { get; set; }
         public string driver { get; set; }
         public string modem { get; set; }
@@ -21,18 +22,21 @@ namespace CatDev
 
     public class Wlan
     {
+        public string name { get; set; }
         public string hwid { get; set; }
         public string driver { get; set; }
     }
 
     public class Lan
     {
+        public string name { get; set; }
         public string hwid { get; set; }
         public string driver { get; set; }
     }
 
     public class Bt
     {
+        public string name { get; set; }
         public string hwid { get; set; }
         public string driver { get; set; }
     }
@@ -40,12 +44,14 @@ namespace CatDev
 
     public class Nfc
     {
+        public string name { get; set; }
         public string hwid { get; set; }
         public string driver { get; set; }
     }
 
     public class Rfid
     {
+        public string name { get; set; }
         public string hwid { get; set; }
         public string driver { get; set; }
     }

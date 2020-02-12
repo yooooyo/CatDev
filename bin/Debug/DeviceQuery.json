@@ -1,4 +1,4 @@
-SELECT Description, DRIVERVERSION,HardWareID FROM WIN32_PNPSIGNEDDRIVER WHERE 
+SELECT * FROM WIN32_PNPSIGNEDDRIVER WHERE 
 (deviceclass='net' and ((description like '%intel%' and description like '%wireless%') or (description like '%intel%' and description like '%wi-fi%') or (description like '%realtek%' and description like '%802.11%')))
 (deviceclass='System' and  (Description like '%ModemControl%'))
 (deviceclass='System' and  (Description like '%7360%' or Description like '%7560%' or Description like '%xmm%'))
