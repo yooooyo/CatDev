@@ -14,9 +14,10 @@ namespace CatDev
         [STAThread]
         static void Main(string[] args)
         {
-            var command = args[0].Trim();
+            
             if(args!=null && args.Length > 0)
             {
+                var command = args[0].Trim();
                 List<string> deviceCommandlist = new List<string>()
                 {
                     "sn",

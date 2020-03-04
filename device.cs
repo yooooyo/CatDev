@@ -149,7 +149,8 @@ namespace CatDev
         }
         public static void GetCommDev()
         {
-            string queryStr = CatConvert.deviceQuery(@".\DeviceQuery.json");
+            string queryStr = CatConvert.deviceQuery(Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "DeviceQuery.json",SearchOption.AllDirectories).FirstOrDefault());
+            //Console.WriteLine(queryStr);
             var devs = new List<Dictionary<string, string>>();
             using (ManagementObjectSearcher m = new ManagementObjectSearcher(queryStr))
             {
@@ -362,10 +363,13 @@ namespace CatDev
                 //}
 
                 //x86
-                foreach (var _interface in interfaces)
+                if (interfaces.Count() > 0)
                 {
-                    MBN_INTERFACE_CAPS caps = _interface.GetInterfaceCapability();
-                    return caps.firmwareInfo.Trim();
+                    foreach (var _interface in interfaces)
+                    {
+                        MBN_INTERFACE_CAPS caps = _interface.GetInterfaceCapability();
+                        return caps.firmwareInfo.Trim();
+                    }
                 }
             }
             catch (Exception error)
